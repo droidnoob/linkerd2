@@ -7,7 +7,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: linkerd-dst
+  name: linkerd-destination
   namespace: {{.Namespace}}
   labels:
     {{.ControllerComponentLabel}}: destination
