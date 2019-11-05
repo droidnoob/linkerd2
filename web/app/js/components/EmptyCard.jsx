@@ -7,8 +7,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = () => ({
   card: {
-    textAlign: 'center',
-    paddingTop: '8px',
+    textAlign: "center",
+    paddingTop: "8px",
   },
 });
 
