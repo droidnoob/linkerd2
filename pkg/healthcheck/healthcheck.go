@@ -35,7 +35,10 @@ import (
 	k8sVersion "k8s.io/apimachinery/pkg/version"
 	"k8s.io/client-go/kubernetes"
 	apiregistrationv1client "k8s.io/kube-aggregator/pkg/client/clientset_generated/clientset/typed/apiregistration/v1"
+<<<<<<< HEAD
 	"sigs.k8s.io/yaml"
+=======
+>>>>>>> Added check for TapAPI service
 )
 
 // CategoryID is an identifier for the types of health checks.
@@ -842,6 +845,14 @@ func (hc *HealthChecker) allCategories() []category {
 				{
 					description: "tap api service is running",
 					hintAnchor:  "l5d-tap-api",
+					warning:     true,
+					check: func(ctx context.Context) error {
+						return hc.checkAPIService(linkerdTapAPIServiceName)
+					},
+				},
+				{
+					description: "tap api service is running",
+					hintAnchor:  "#",
 					warning:     true,
 					check: func(ctx context.Context) error {
 						return hc.checkAPIService(linkerdTapAPIServiceName)
