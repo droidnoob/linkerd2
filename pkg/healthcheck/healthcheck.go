@@ -35,10 +35,7 @@ import (
 	k8sVersion "k8s.io/apimachinery/pkg/version"
 	"k8s.io/client-go/kubernetes"
 	apiregistrationv1client "k8s.io/kube-aggregator/pkg/client/clientset_generated/clientset/typed/apiregistration/v1"
-<<<<<<< HEAD
 	"sigs.k8s.io/yaml"
-=======
->>>>>>> Added check for TapAPI service
 )
 
 // CategoryID is an identifier for the types of health checks.
@@ -850,6 +847,14 @@ func (hc *HealthChecker) allCategories() []category {
 						return hc.checkAPIService(linkerdTapAPIServiceName)
 					},
 				},
+				{
+					description: "tap api service is running",
+					hintAnchor:  "#",
+					warning:     true,
+					check: func(ctx context.Context) error {
+						return hc.checkAPIService(linkerdTapAPIServiceName)
+					},
+				},
 			},
 		},
 		{
@@ -1605,6 +1610,7 @@ func (hc *HealthChecker) checkAPIService(serviceName string) error {
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	apiStatus, err := apiServiceClient.APIServices().Get(serviceName, metav1.GetOptions{})
 	if err != nil && len(apiStatus.Status.Conditions) == 0 {
 		return err
@@ -1623,10 +1629,15 @@ func (hc *HealthChecker) checkAPIService(serviceName string) error {
 		return fmt.Errorf(errorMessage)
 	}
 =======
+=======
+>>>>>>> Added check for TapAPI service
 	_, err = apiServiceClient.APIServices().Get(serviceName, metav1.GetOptions{})
 	if err != nil {
 		return err
 	}
+<<<<<<< HEAD
+>>>>>>> Added check for TapAPI service
+=======
 >>>>>>> Added check for TapAPI service
 	return nil
 }
