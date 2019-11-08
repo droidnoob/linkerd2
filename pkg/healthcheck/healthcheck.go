@@ -849,7 +849,7 @@ func (hc *HealthChecker) allCategories() []category {
 				},
 				{
 					description: "tap api service is running",
-					hintAnchor:  "#",
+					hintAnchor:  "l5d-tap-api",
 					warning:     true,
 					check: func(ctx context.Context) error {
 						return hc.checkAPIService(linkerdTapAPIServiceName)
@@ -1609,8 +1609,6 @@ func (hc *HealthChecker) checkAPIService(serviceName string) error {
 		return err
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 	apiStatus, err := apiServiceClient.APIServices().Get(serviceName, metav1.GetOptions{})
 	if err != nil && len(apiStatus.Status.Conditions) == 0 {
 		return err
@@ -1628,17 +1626,6 @@ func (hc *HealthChecker) checkAPIService(serviceName string) error {
 	if !available {
 		return fmt.Errorf(errorMessage)
 	}
-=======
-=======
->>>>>>> Added check for TapAPI service
-	_, err = apiServiceClient.APIServices().Get(serviceName, metav1.GetOptions{})
-	if err != nil {
-		return err
-	}
-<<<<<<< HEAD
->>>>>>> Added check for TapAPI service
-=======
->>>>>>> Added check for TapAPI service
 	return nil
 }
 
