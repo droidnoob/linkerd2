@@ -1593,9 +1593,13 @@ func (hc *HealthChecker) checkAPIService(serviceName string) error {
 		return err
 	}
 
-	_, err = apiServiceClient.APIServices().Get(serviceName, metav1.GetOptions{})
-	if err != nil {
+	apiStatus, err := apiServiceClient.APIServices().Get(serviceName, metav1.GetOptions{})
+	if err != nil && len(apiStatus.Status.Conditions) == 0 {
 		return err
+	}
+
+	if apiStatus.Status.Conditions[0].Status != "True" {
+		return fmt.Errorf("%s service is not available", serviceName)
 	}
 	return nil
 }
