@@ -1,3 +1,43 @@
+## edge-19.11.2
+
+* CLI
+  * Added a `Dashboard.Replicas` parameter to the Linkerd Helm chart to allow
+    configuring the number of dashboard replicas (thanks @KIVagant!)
+  * Removed redundant service profile check (thanks @alenkacz!)
+* Web UI
+  * Added `linkerd check` to the dashboard in the `/controlplane` view
+  * Added request and response headers to the `tap` expanded view in the
+    dashboard
+* Internal
+  * Removed the destination container from the linkerd-controller deployment as
+    it now runs in the linkerd-destination deployment
+  * Upgraded Go to version 1.13.4
+
+## edge-19.11.1
+
+* CLI
+  * Updated `uninject` command to work with namespace resources
+    (thanks @mayankshah1607!)
+* Controller
+  * Added `conntrack` to the `debug` container to help with connection tracking
+    debugging
+  * Fixed a bug in `tap` where mismatch cluster domain and trust domain caused
+    `tap` to hang
+  * Fixed an issue in the `identity` RBAC resource which caused start up errors
+    in k8s 1.6 (thanks @Pothulapati!)
+* Proxy
+  * Improved debug/error logging to include detailed contextual information
+* Web UI
+  * Added filter to namespace select button
+  * Improved how empty tables are displayed
+* Internal
+  * Added integration test for custom cluster domain
+  * Allowed the control plane to be injected with the `debug` container
+  * Updated proxy image build script to support HTTP proxy options
+    (thanks @joakimr-axis!)
+  * Updated the CLI `doc` command to auto-generate documentation for the proxy
+    configuration annotations (thanks @StupidScience!)
+
 ## edge-19.10.5
 
 This edge release adds support for integrating Linkerd's PKI with an external
