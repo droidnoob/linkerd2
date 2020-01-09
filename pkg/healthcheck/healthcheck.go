@@ -1617,7 +1617,7 @@ func (hc *HealthChecker) checkAPIService(serviceName string) error {
 	available := false
 	var errorMessage string
 	for _, condition := range apiStatus.Status.Conditions {
-		if condition.Status == "True" {
+		if condition.Type == "Available" && condition.Status == "True" {
 			available = true
 			break
 		}
