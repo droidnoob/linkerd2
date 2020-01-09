@@ -847,22 +847,6 @@ func (hc *HealthChecker) allCategories() []category {
 						return hc.checkAPIService(linkerdTapAPIServiceName)
 					},
 				},
-				{
-					description: "tap api service is running",
-					hintAnchor:  "#",
-					warning:     true,
-					check: func(ctx context.Context) error {
-						return hc.checkAPIService(linkerdTapAPIServiceName)
-					},
-				},
-				{
-					description: "tap api service is running",
-					hintAnchor:  "l5d-tap-api",
-					warning:     true,
-					check: func(ctx context.Context) error {
-						return hc.checkAPIService(linkerdTapAPIServiceName)
-					},
-				},
 			},
 		},
 		{
